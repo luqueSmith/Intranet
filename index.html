@@ -1,8 +1,36 @@
 <!doctype html>
-<html lang="es">
-<head><meta charset="UTF-8"><title>NexaTech Intranet</title></head>
-<body style="background:#050914;color:white;font-family:Arial;text-align:center">
-<div id="root"></div>
-<script type="module" src="/Intranet/assets/app.js"></script>
-</body>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Google AI Studio App</title>
+    <script>
+      // Global patch to prevent TypeError: Cannot set property fetch of #<Window> which has only a getter
+      // This is particularly critical in sandboxed or simulated iframe preview environments.
+      (function() {
+        try {
+          var originalFetch = window.fetch;
+          var currentFetch = originalFetch;
+          Object.defineProperty(window, 'fetch', {
+            get: function() {
+              return currentFetch;
+            },
+            set: function(val) {
+              currentFetch = val;
+            },
+            configurable: true,
+            enumerable: true
+          });
+        } catch (e) {
+          console.warn('Safe fetch wrapper warning:', e);
+        }
+      })();
+    </script>
+    <script type="module" crossorigin src="/Intranet/assets/index-C97yKT2D.js"></script>
+    <link rel="stylesheet" crossorigin href="/Intranet/assets/index-sHqECwM6.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
 </html>
+
